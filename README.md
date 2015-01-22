@@ -7,6 +7,8 @@ HowTo use.
 
 Download AdMob iOS SDK and add it to your project https://developers.google.com/mobile-ads-sdk/download
 
+change MY_INTERSTITIAL_ID @"ca-app-pub-*/*" and MY_BANNER_ID @"ca-app-pub-*/*" on header to your.
+
 At first you need to load ad. I recommend do it on AppDelegate:
 
   [[MyAdMobController sharedController] loadBannerView];
