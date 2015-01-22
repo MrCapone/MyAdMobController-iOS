@@ -15,9 +15,9 @@ At first you need to load ad. I recommend do it on AppDelegate:
   
   [[MyAdMobController sharedController] loadInterstitial];
   
-Then load ad from your scene.
+Then show ad on your scene.
 
-For load Interstitial on current scene just call this methods on - (void)onEnter
+For show Interstitial on current scene just call this methods on - (void)onEnter
 
   UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
   [[MyAdMobController sharedController] showInterstitialOnViewController:rootViewController];
