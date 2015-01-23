@@ -18,25 +18,13 @@ Then load ad from your scene.
 
 For load Interstitial on current scene just call this methods on - (void)onEnter
 ```
-=======
-  
-Then show ad on your scene.
-
-For show Interstitial on current scene just call this methods on - (void)onEnter
-
-  UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-  [[MyAdMobController sharedController] showInterstitialOnViewController:rootViewController];
-```  
-  
+UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController]; [[MyAdMobController sharedController] showInterstitialOnViewController:rootViewController];
+```
 For show BannerView first create UIView and add it to top of root UIView:
 ```
-  UIView *adView = [[UIView alloc] initWithFrame:adRect];
-  [[CCDirector sharedDirector].view addSubview:adView];
-```  
-then add Banner View to it:
+UIView *adView = [[UIView alloc] initWithFrame:adRect]; 
+[[CCDirector sharedDirector].view addSubview:adView];
 ```
-  [[MyAdMobController sharedController] addBannerToView:adView];
-``` 
 If you need to resolve some controller methods on your scene use <MyAdMobControllerDelagate> protocol:
 ```
   @interface MyScene () <MyAdMobControllerDelagate>
