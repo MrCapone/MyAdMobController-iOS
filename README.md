@@ -6,14 +6,13 @@ HowTo use.
 
 Download AdMob iOS SDK and add it to your project https://developers.google.com/mobile-ads-sdk/download
 
-change MY_INTERSTITIAL_ID @"ca-app-pub-*/*" and MY_BANNER_ID @"ca-app-pub-*/*" on header to your.
+change "MY_INTERSTITIAL_ID @"ca-app-pub-*/*" and "MY_BANNER_ID @"ca-app-pub-*/*" on header to your.
 
 At first you need to load ad. I recommend do it on AppDelegate:
 ```
   [[MyAdMobController sharedController] loadBannerView];
   
   [[MyAdMobController sharedController] loadInterstitial];
-<<<<<<< HEAD
 ```
 Then load ad from your scene.
 
@@ -25,7 +24,6 @@ Then show ad on your scene.
 
 For show Interstitial on current scene just call this methods on - (void)onEnter
 
->>>>>>> 74938210f9edf526b7941aa305179f563bd14dd8
   UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
   [[MyAdMobController sharedController] showInterstitialOnViewController:rootViewController];
 ```  
