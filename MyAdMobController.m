@@ -22,7 +22,7 @@
 - (void)loadInterstitial
 {
     if ( interstitial_ != nil ) {
-        interstitial_ = nil;
+        interstitial_ = nil; //clean interstitial for reloading
         
     }
     
@@ -34,14 +34,18 @@
 
 - (void)interstitialDidDismissScreen:(GADInterstitial *)ad
 {
-    [delegate MyInterstitialDidDismissScreen:ad];
+    if (delegate) {
+        [delegate MyInterstitialDidDismissScreen:ad];
+    }
     
     [self loadInterstitial];
 }
 
 - (void)interstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error
 {
-    [delegate MyInterstitial:ad didFailToReceiveAdWithError:error];
+    if (delegate) {
+        [delegate MyInterstitial:ad didFailToReceiveAdWithError:error];
+    }
     
     NSLog(@"Interstitial loading error: %@", error.description);
 }
@@ -63,11 +67,10 @@
 - (void)loadBannerView
 {
     if (bannerView_ != nil) {
-        bannerView_ = nil;
+        bannerView_ = nil; //clear bannerView for reloading
     }
     
     bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait origin:CGPointMake(0, 0)];
-    [bannerView_ setFrame:bannerView_.frame];
     bannerView_.adUnitID = MY_BANNER_ID;
     bannerView_.rootViewController = [CCDirector sharedDirector]; //dirty hack, need more tests
     bannerView_.delegate = self;
@@ -76,7 +79,9 @@
 
 -(void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error
 {
-    [delegate MyAdView:view didFailToReceiveAdWithError:error];
+    if (delegate) {
+        [delegate MyAdView:view didFailToReceiveAdWithError:error];
+    }
     
     NSLog(@"Banner loading error: %@", error.description);
 
@@ -84,7 +89,9 @@
 
 - (void)adViewDidReceiveAd:(GADBannerView *)view
 {
-    [delegate MyAdViewDidReceiveAd:view];
+    if (delegate) {
+        [delegate MyAdViewDidReceiveAd:view];
+    }
 }
 
 - (void)addBannerToView:(UIView *)view

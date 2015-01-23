@@ -25,7 +25,6 @@
 {
     GADInterstitial *interstitial_;
     GADBannerView *bannerView_;
-    
 }
 
 @property (nonatomic, strong) id delegate;
