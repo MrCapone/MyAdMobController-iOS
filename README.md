@@ -6,7 +6,7 @@ HowTo use.
 
 Download AdMob iOS SDK and add it to your project https://developers.google.com/mobile-ads-sdk/download
 
-change "MY_INTERSTITIAL_ID @"ca-app-pub-*/*" and "MY_BANNER_ID @"ca-app-pub-*/*" on header to your.
+change `MY_INTERSTITIAL_ID @"ca-app-pub-*/*` and `MY_BANNER_ID @"ca-app-pub-*/*` on header to your.
 
 At first you need to load ad. I recommend do it on AppDelegate:
 ```
@@ -14,18 +14,24 @@ At first you need to load ad. I recommend do it on AppDelegate:
   
   [[MyAdMobController sharedController] loadInterstitial];
 ```
-Then load ad from your scene.
+Then add ad to your scene.
 
-For load Interstitial on current scene just call this methods on - (void)onEnter
+For show Interstitial on current scene just call this methods on `- (void)onEnter`
 ```
-UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController]; [[MyAdMobController sharedController] showInterstitialOnViewController:rootViewController];
+UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+
+[[MyAdMobController sharedController] showInterstitialOnViewController:rootViewController];
 ```
 For show BannerView first create UIView and add it to top of root UIView:
 ```
 UIView *adView = [[UIView alloc] initWithFrame:adRect]; 
 [[CCDirector sharedDirector].view addSubview:adView];
 ```
-If you need to resolve some controller methods on your scene use <MyAdMobControllerDelagate> protocol:
+then add Banner View to it:
+```
+[[MyAdMobController sharedController] addBannerToView:adView];
+```
+If you need to resolve some controller methods on your scene use `<MyAdMobControllerDelagate>` protocol:
 ```
   @interface MyScene () <MyAdMobControllerDelagate>
 ```
