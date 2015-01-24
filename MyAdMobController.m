@@ -34,8 +34,8 @@
 
 - (void)interstitialDidDismissScreen:(GADInterstitial *)ad
 {
-    if (delegate) {
-        [delegate MyInterstitialDidDismissScreen:ad];
+    if ([self.delegate respondsToSelector:@selector(MyInterstitialDidDismissScreen:)]) {
+        [self.delegate MyInterstitialDidDismissScreen:ad];
     }
     
     [self loadInterstitial];
@@ -43,8 +43,8 @@
 
 - (void)interstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error
 {
-    if (delegate) {
-        [delegate MyInterstitial:ad didFailToReceiveAdWithError:error];
+    if ([self.delegate respondsToSelector:@selector(MyInterstitial:didFailToReceiveAdWithError:)]) {
+        [self.delegate MyInterstitial:ad didFailToReceiveAdWithError:error];
     }
     
     NSLog(@"Interstitial loading error: %@", error.description);
@@ -79,8 +79,8 @@
 
 -(void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error
 {
-    if (delegate) {
-        [delegate MyAdView:view didFailToReceiveAdWithError:error];
+    if ([self.delegate respondsToSelector:@selector(MyAdView:didFailToReceiveAdWithError:)]) {
+        [self.delegate MyAdView:view didFailToReceiveAdWithError:error];
     }
     
     NSLog(@"Banner loading error: %@", error.description);
@@ -89,8 +89,8 @@
 
 - (void)adViewDidReceiveAd:(GADBannerView *)view
 {
-    if (delegate) {
-        [delegate MyAdViewDidReceiveAd:view];
+    if ([self.delegate respondsToSelector:@selector(MyAdViewDidReceiveAd:)]) {
+        [self.delegate MyAdViewDidReceiveAd:view];
     }
 }
 
