@@ -16,7 +16,7 @@ At first you need to load ad. I recommend do it on AppDelegate:
 ```
 Then add ad to your scene.
 
-For show Interstitial on current scene just call this methods on `- (void)onEnter`
+For show Interstitial on current scene just call this methods
 ```
 UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
 
@@ -31,6 +31,11 @@ then add Banner View to it:
 ```
 [[MyAdMobController sharedController] addBannerToView:adView];
 ```
+`adRect` it's `CGrect` with size of banner and origin where you want it. For example to show banner on bottom of iphone
+```
+CGrect adRect = CGRectMake(0, [CCDirector sharedDirector] viewSize].height-50, 320, 50);
+```
+
 If you need to resolve some controller methods on your scene use `<MyAdMobControllerDelagate>` protocol:
 ```
   @interface MyScene () <MyAdMobControllerDelagate>
