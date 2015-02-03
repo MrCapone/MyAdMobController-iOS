@@ -57,6 +57,10 @@
     }
     else
     {
+        if ([self.delegate respondsToSelector:@selector(MyInterstitialNotLoaded)]) {
+            [self.delegate MyInterstitialNotLoaded];
+        }
+        
         NSLog(@"Interstitial is not loaded");
         [self loadInterstitial];
     }

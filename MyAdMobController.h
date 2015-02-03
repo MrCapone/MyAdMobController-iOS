@@ -15,6 +15,7 @@
 
 - (void)MyInterstitialDidDismissScreen:(GADInterstitial *)ad;
 - (void)MyInterstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error;
+- (void)MyInterstitialNotLoaded;
 
 - (void)MyAdViewDidReceiveAd:(GADBannerView *)view;
 - (void)MyAdView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error;
