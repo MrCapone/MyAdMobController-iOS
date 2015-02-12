@@ -62,7 +62,10 @@
         }
         
         NSLog(@"Interstitial is not loaded");
-        [self loadInterstitial];
+        
+        if (interstitial_ == nil) {
+            [self loadInterstitial];
+        }
     }
 }
 
