@@ -35,5 +35,6 @@
 - (void)loadBannerView;
 - (void)showInterstitialOnViewController:(UIViewController *)viewController;
 - (void)addBannerToView:(UIView *)view;
+- (void)removeBanner;
 
 @end

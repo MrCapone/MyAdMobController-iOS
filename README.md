@@ -18,7 +18,7 @@ Then add ad to your scene.
 
 For show Interstitial on current scene just call this methods
 ```
-UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
 
 [[MyAdMobController sharedController] showInterstitialOnViewController:rootViewController];
 ```
@@ -54,4 +54,4 @@ and implement this methods on your scene implementation:
   - (void)MyAdView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error;
 ```
   
-Also about banner reloading. Interstitial automatically will reloaded after user closed it. Banner view will try reload only if it failed to load first time. If you want to reload it just call ```[[MyAdMobController sharedController] loadBannerView];```. For example I do it on ```- (void)onExit``` of my scene, where banner was shown, so next time on this scene will be shown new banner.
+Also about banner reloading. Interstitial automatically will reloaded after user closed it. Banner view will try reload only if it failed to load first time.

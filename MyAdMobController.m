@@ -74,12 +74,12 @@
 - (void)loadBannerView
 {
     if (bannerView_ != nil) {
-        bannerView_ = nil; //clear bannerView for reloading
+        return;
     }
     
     bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait origin:CGPointMake(0, 0)];
     bannerView_.adUnitID = MY_BANNER_ID;
-    bannerView_.rootViewController = [CCDirector sharedDirector]; //dirty hack, need more tests
+    bannerView_.rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     bannerView_.delegate = self;
     [bannerView_ loadRequest:[GADRequest request]];
 }
@@ -111,6 +111,11 @@
         NSLog(@"Banner is not loaded");
         [self loadBannerView];
     }
+}
+
+- (void)removeBanner
+{
+	[bannerView_ removeFromSuperview];
 }
 
 @end
